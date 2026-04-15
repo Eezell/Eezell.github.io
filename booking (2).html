@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book a Session — Neighborly AI</title>
+  <meta name="description" content="Book your Neighborly AI coaching session. Choose individual, group, or business coaching and get started today.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- NAVIGATION -->
+  <nav class="navbar" aria-label="Main navigation">
+    <div class="container">
+      <a href="index.html" class="nav-logo" aria-label="Neighborly AI Home">
+        <span class="logo-icon">🏡</span> Neighborly AI
+      </a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" onclick="document.querySelector('.nav-links').classList.toggle('open'); this.setAttribute('aria-expanded', this.getAttribute('aria-expanded')==='false')">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="booking.html" class="active">Book a Session</a></li>
+        <li><a href="merch.html">Merch</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header" id="main">
+    <div class="container">
+      <h1>Book a Session</h1>
+      <p>Pick the option that fits you best, and let's get started. It's easier than you think!</p>
+    </div>
+  </header>
+
+  <!-- HOW IT WORKS -->
+  <section>
+    <div class="container">
+      <h2 class="section-title">How It Works</h2>
+      <p class="section-subtitle">Three simple steps — that's it.</p>
+
+      <div class="booking-steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Pick Your Session</h3>
+          <p>Choose from a 1-on-1 session, group workshop, follow-up, or business consulting below.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>Pay Securely</h3>
+          <p>Click the button and pay through Stripe — fast, safe, and simple.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>Show Up &amp; Learn</h3>
+          <p>Join by video call or meet in person. We handle everything else — just bring your curiosity!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INDIVIDUAL BOOKING OPTIONS -->
+  <section>
+    <div class="container">
+      <h2 class="section-title">Individual Sessions</h2>
+      <p class="section-subtitle">Click the button to book and pay securely through Stripe.</p>
+
+      <div class="pricing-grid">
+
+        <!-- FREE INTRO -->
+        <div class="pricing-card">
+          <h3>☕ Free Intro Call</h3>
+          <div class="pricing-price">Free</div>
+          <p class="pricing-desc">15 minutes — let's chat about your goals.</p>
+          <ul class="pricing-features">
+            <li>No commitment needed</li>
+            <li>Phone or video call</li>
+            <li>Get a personalized plan</li>
+          </ul>
+          <a href="https://calendar.app.google/JovUGeYaKx1PZbg39" class="btn btn-outline">Schedule Free Call</a>
+        </div>
+
+        <!-- 1-ON-1 SESSION -->
+        <div class="pricing-card featured">
+          <div class="pricing-badge">Most Popular</div>
+          <h3>🤝 1-on-1 Session</h3>
+          <div class="pricing-price">$75</div>
+          <p class="pricing-desc">60 minutes of focused, one-on-one coaching.</p>
+          <ul class="pricing-features">
+            <li>Personalized to your needs</li>
+            <li>Video call or in-person</li>
+            <li>Take-home notes included</li>
+          </ul>
+          <a href="https://buy.stripe.com/test_14AaEQ1fo4BJed89UfaVa01" class="btn btn-primary">Book &amp; Pay — $75</a>
+        </div>
+
+        <!-- FOLLOW-UP SESSION -->
+        <div class="pricing-card">
+          <h3>🔄 Follow-Up Session</h3>
+          <div class="pricing-price">$45</div>
+          <p class="pricing-desc">A shorter check-in to build on what you've learned.</p>
+          <ul class="pricing-features">
+            <li>30-minute focused session</li>
+            <li>Review and reinforce skills</li>
+            <li>Get answers to new questions</li>
+          </ul>
+          <a href="https://buy.stripe.com/bJecN73UX0Ny7zMdyu7wA02" class="btn btn-primary">Book &amp; Pay — $45</a>
+        </div>
+
+      </div>
+
+      <div class="emoji-divider">🏡 · 🤝 · 💡</div>
+
+      <h2 class="section-title">Group, Business &amp; Resources</h2>
+      <p class="section-subtitle">Bring your team, your book club, or grab some learning materials.</p>
+
+      <div class="pricing-grid">
+
+        <!-- TRAINING MATERIAL -->
+        <div class="pricing-card">
+          <h3>📚 Training Material</h3>
+          <div class="pricing-price">$35</div>
+          <p class="pricing-desc">Take-home guides and resources to learn at your own pace.</p>
+          <ul class="pricing-features">
+            <li>Digital training guides</li>
+            <li>Step-by-step tutorials</li>
+            <li>Reference sheets you can keep</li>
+          </ul>
+          <a href="https://book.stripe.com/7sY7sN9fh2VG5rE3XU7wA01" class="btn btn-secondary">Get Materials — $35</a>
+        </div>
+
+        <!-- GROUP WORKSHOP -->
+        <div class="pricing-card featured">
+          <div class="pricing-badge">Great for Teams</div>
+          <h3>👥 Group Workshop</h3>
+          <div class="pricing-price">$150</div>
+          <p class="pricing-desc">Interactive workshop for your group, customized to your needs.</p>
+          <ul class="pricing-features">
+            <li>90-minute interactive workshop</li>
+            <li>Customized content</li>
+            <li>Handouts for everyone</li>
+          </ul>
+          <a href="https://buy.stripe.com/fZuaEZbnpao83jwbqm7wA06" class="btn btn-primary">Book &amp; Pay — $150</a>
+        </div>
+
+        <!-- BUSINESS CONSULTING -->
+        <div class="pricing-card">
+          <h3>🏪 Business Consulting</h3>
+          <div class="pricing-price">$250 <span>/ session</span></div>
+          <p class="pricing-desc">Focused help for your business workflows.</p>
+          <ul class="pricing-features">
+            <li>Tool setup &amp; training</li>
+            <li>Automation guidance</li>
+            <li>30-day email support</li>
+          </ul>
+          <a href="https://buy.stripe.com/14A9AVajl1RCdYa2TQ7wA05" class="btn btn-secondary">Book &amp; Pay — $250</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT TO BRING -->
+  <section>
+    <div class="container">
+      <h2 class="section-title">What to Bring to Your Session</h2>
+      <p class="section-subtitle">Spoiler: not much! Just these basics:</p>
+
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-icon">💻</div>
+          <h3>Your Device</h3>
+          <p>Laptop, tablet, or phone — whatever you normally use. We'll work with what you've got.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🤔</div>
+          <h3>Your Questions</h3>
+          <p>Got specific things you want to learn? Bring those! No questions are too basic.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">😊</div>
+          <h3>An Open Mind</h3>
+          <p>That's it! We'll handle the rest. No homework, no prep work required.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <div class="cta-banner">
+    <div class="container">
+      <h2>Questions Before You Book?</h2>
+      <p>Not sure which session is right for you? Start with a free intro call — no pressure, just a friendly chat.</p>
+      <a href="https://calendar.app.google/JovUGeYaKx1PZbg39" class="btn btn-primary">Book a Free Intro Call</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>🏡 Neighborly AI</h4>
+          <p>Practical AI coaching for everyday people. Based in Des Moines, serving everyone everywhere.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="booking.html">Book a Session</a></li>
+            <li><a href="merch.html">Merch</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Get in Touch</h4>
+          <p>Have questions? Drop us a line!</p>
+          <p><a href="/cdn-cgi/l/email-protection#6729020e000f0508150b1e262e27371508130809492a02"><span class="__cf_email__" data-cfemail="eaa48f838d828885988693aba3aaba98859e8584c4a78f">[email&#160;protected]</span></a></p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Neighborly AI. All rights reserved. Made with warmth in Des Moines, Iowa.</p>
+      </div>
+    </div>
+  </footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>
