@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book a Session — Ezell's AI Studio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">Ezell's AI Studio</a>
+      <button class="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="booking.html" class="active">Book</a></li>
+        <li><a href="merch.html">Merch</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="container">
+      <h1>Book a <strong>Session</strong></h1>
+      <p>Pick your session. 
+      Click your link. 
+      Show up as you are. 
+      That is all it takes.</p>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <section class="section-dark">
+    <div class="container">
+      <div class="gold-divider"></div>
+      <h2 class="section-title">
+        How it <strong>works.</strong>
+      </h2>
+      <p class="section-subtitle">
+        Three simple steps between you 
+        and your first session.
+      </p>
+      <div class="booking-steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Choose Your Session</h3>
+          <p>Pick the service that feels 
+          right for where you are. 
+          Not sure? Start with 
+          One-on-One Coaching.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>Complete Your Booking</h3>
+          <p>Secure your spot through Stripe. 
+          Safe, simple, and straightforward. 
+          A 50% deposit is required 
+          for group bookings.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>Show Up & Learn</h3>
+          <p>We meet remotely via 
+          Zoom, Skype, or FaceTime. 
+          You just need to show up. 
+          We handle everything else.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING LINKS -->
+  <section class="section-mid">
+    <div class="container">
+      <div class="gold-divider"></div>
+      <h2 class="section-title">
+        Ready to <strong>begin?</strong>
+      </h2>
+      <p class="section-subtitle">
+        Every session starts with 
+        a single click.
+      </p>
+
+      <div class="services-grid">
+
+        <div class="service-card">
+          <div class="service-icon">👤</div>
+          <h3>One-on-One Coaching</h3>
+          <span class="service-duration">60 minutes · Remote</span>
+          <p>Personalized. Patient. 
+          All about you and your goals.</p>
+          <span class="service-price">\$75 
+            <span>per session</span>
+          </span>
+          <a href="https://buy.stripe.com/14A8wRgHJdAkaLYami7wA08"
+             class="btn btn-gold" target="_blank">Book Now</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🔄</div>
+          <h3>Follow-Up Help</h3>
+          <span class="service-duration">30 minutes · Remote</span>
+          <p>Quick support, troubleshooting, 
+          or your next steps after a session.</p>
+          <span class="service-price">\$40 
+            <span>per session</span>
+          </span>
+          <a href="https://buy.stripe.com/bJecN73UX0Ny7zMdyu7wA02"
+             class="btn btn-gold" target="_blank">Book Now</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">👥</div>
+          <h3>Small Group Session</h3>
+          <span class="service-duration">90 minutes · 4+ people</span>
+          <p>Live demos, guided practice, 
+          Q&A, and printed materials 
+          for everyone.</p>
+          <span class="service-price">\$180 
+            <span>per group</span>
+          </span>
+          <a href="https://buy.stripe.com/00w14pgHJbsc7zM51Y7wA03"
+             class="btn btn-gold" target="_blank">Book Now</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🏛️</div>
+          <h3>Large Group Session</h3>
+          <span class="service-duration">90 minutes · 6+ people</span>
+          <p>For organizations, teams, 
+          and community groups. 
+          50% deposit required.</p>
+          <span class="service-price">\$250 
+            <span>per group</span>
+          </span>
+          <a href="https://buy.stripe.com/4gMdRbbnpgMw2fseCy7wA07"
+             class="btn btn-gold" target="_blank">Book Now</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">📚</div>
+          <h3>Growing with AI</h3>
+          <span class="service-duration">
+            Multi-Session Program
+          </span>
+          <p>A progressive learning series 
+          for deeper support and 
+          real confidence over time.</p>
+          <span class="service-price">\$60 
+            <span>per person</span>
+          </span>
+          <a href="https://buy.stripe.com/fZuaEZbnpao83jwbqm7wA06"
+             class="btn btn-gold" target="_blank">Book Now</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">💼</div>
+          <h3>Custom Business Support</h3>
+          <span class="service-duration">Project Based</span>
+          <p>Practical AI help for small 
+          businesses. No hype. 
+          No jargon. Just results.</p>
+          <span class="service-price">\$250 
+            <span>per project</span>
+          </span>
+          <a href="https://buy.stripe.com/14A9AVajl1RCdYa2TQ7wA05"
+             class="btn btn-gold" target="_blank">Book Now</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PRINTED MATERIALS -->
+  <section class="section-deep">
+    <div class="container" style="text-align: center;">
+      <div class="gold-divider"></div>
+      <h2 class="section-title">
+        Need Printed <strong>Materials?</strong>
+      </h2>
+      <p class="section-subtitle">
+        Easy-read take-home folders. 
+        Large font. Plain language. 
+        Real practical value. 
+        Includes shipping and handling.
+      </p>
+      <p style="color: var(--gold-light);
+                font-family: var(--font-heading);
+                font-size: 2rem;
+                margin-bottom: 0.5rem;">\$25</p>
+      <p style="color: var(--text-muted);
+                font-size: 0.88rem;
+                margin-bottom: 2rem;">
+        per person · includes shipping & handling
+      </p>
+      <a href="https://book.stripe.com/7sY7sN9fh2VG5rE3XU7wA01"
+         class="btn btn-gold" target="_blank">
+        Order Printed Materials
+      </a>
+    </div>
+  </section>
+
+  <!-- WHAT TO EXPECT -->
+  <div class="values-strip">
+    <div class="container">
+      <div class="gold-divider"></div>
+      <h2 class="section-title"
+          style="position: relative; z-index: 1;">
+        What to <strong>expect.</strong>
+      </h2>
+      <div class="values-grid">
+        <div class="value-item">
+          <span class="value-icon">💛</span>
+          <h3>Warmth</h3>
+          <p>You will be welcomed exactly 
+          where you are. 
+          No judgment. Ever.</p>
+        </div>
+        <div class="value-item">
+          <span class="value-icon">🎯</span>
+          <h3>Clarity</h3>
+          <p>You will leave every session 
+          understanding something 
+          you did not before.</p>
+        </div>
+        <div class="value-item">
+          <span class="value-icon">🛠️</span>
+          <h3>Practical Skills</h3>
+          <p>Real tools. Real techniques. 
+          Things you can actually use 
+          the same day.</p>
+        </div>
+        <div class="value-item">
+          <span class="value-icon">🌱</span>
+          <h3>Confidence</h3>
+          <p>Every session is designed 
+          to leave you feeling more capable 
+          than when you arrived.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-banner">
+    <div class="container">
+      <h2>There is no wrong place to start.</h2>
+      <p>
+        Wherever you are is exactly 
+        the right place to begin. 
+        Pick a session and let's go.
+      </p>
+      <div class="btn-group">
+        <a href="https://buy.stripe.com/14A8wRgHJdAkaLYami7wA08"
+           class="btn btn-gold" target="_blank">
+          Start with One-on-One
+        </a>
+        <a href="services.html" 
+           class="btn btn-outline-gold">
+          See All Services
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <span class="footer-brand">Ezell's AI Studio</span>
+          <p>Patient, practical AI and technology 
+          support for real people.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigate</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="booking.html">Book a Session</a></li>
+            <li><a href="merch.html">Merch</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="https://buy.stripe.com/14A8wRgHJdAkaLYami7wA08"
+                   target="_blank">One-on-One Coaching</a></li>
+            <li><a href="https://buy.stripe.com/bJecN73UX0Ny7zMdyu7wA02"
+                   target="_blank">Follow-Up Help</a></li>
+            <li><a href="https://buy.stripe.com/00w14pgHJbsc7zM51Y7wA03"
+                   target="_blank">Group Sessions</a></li>
+            <li><a href="https://buy.stripe.com/fZuaEZbnpao83jwbqm7wA06"
+                   target="_blank">Growing with AI</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Get in Touch</h4>
+          <p>Remote sessions available via<br>
+          Zoom · Skype · FaceTime</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Ezell's AI Studio · 
+        Crafted with intention · 
+        Powered by real human connection</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- NAV TOGGLE SCRIPT -->
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const links = document.querySelector('.nav-links');
+    toggle.addEventListener('click', () => {
+      links.classList.toggle('open');
+    });
+  </script>
+
+</body>
+</html>
