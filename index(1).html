@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ezell's AI Studio — A Gentler Way Into AI</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --teal-darkest: #0a2e2e;
+      --teal-dark: #0d3d3d;
+      --teal-mid: #125f5f;
+      --teal-bright: #1a8a8a;
+      --teal-light: #2dbfbf;
+      --teal-pale: #a8e6e6;
+      --teal-ghost: #e0f5f5;
+      --white: #ffffff;
+      --off-white: #f4fafa;
+      --serif: 'DM Serif Display', Georgia, serif;
+      --sans: 'DM Sans', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--white);
+      color: var(--teal-darkest);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 4rem;
+      background: var(--teal-darkest);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--teal-pale);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      background: var(--teal-darkest);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding-top: 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(45,191,191,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-text {
+      padding: 6rem 4rem 6rem 6rem;
+      z-index: 1;
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--teal-light);
+      margin-bottom: 1.5rem;
+      border: 1px solid var(--teal-mid);
+      padding: 0.4rem 1rem;
+      border-radius: 2rem;
+    }
+
+    .hero-title {
+      font-family: var(--serif);
+      font-size: clamp(2.8rem, 5vw, 4.5rem);
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--teal-light);
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: var(--teal-pale);
+      max-width: 480px;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+    }
+
+    .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--teal-light);
+      color: var(--teal-darkest);
+      padding: 0.9rem 2rem;
+      border-radius: 0.3rem;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn-primary:hover { background: var(--teal-pale); transform: translateY(-2px); }
+
+    .btn-outline {
+      display: inline-block;
+      border: 1px solid var(--teal-mid);
+      color: var(--teal-pale);
+      padding: 0.9rem 2rem;
+      border-radius: 0.3rem;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-outline:hover { border-color: var(--teal-light); color: var(--white); }
+
+    .hero-image {
+      height: 100vh;
+      background: var(--teal-mid);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-image img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0.7;
+      mix-blend-mode: luminosity;
+    }
+
+    .hero-image-placeholder {
+      width: 100%; height: 100%;
+      background: linear-gradient(135deg, var(--teal-mid) 0%, var(--teal-bright) 50%, var(--teal-dark) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .hero-image-placeholder span {
+      color: rgba(255,255,255,0.3);
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    /* ── TRUST BAR ── */
+    .trust-bar {
+      background: var(--teal-mid);
+      padding: 1.5rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4rem;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--white);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+
+    .trust-item span.icon { font-size: 1.2rem; }
+
+    /* ── SECTION BASE ── */
+    section { position: relative; }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--teal-bright);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      line-height: 1.15;
+      margin-bottom: 1.2rem;
+    }
+
+    .section-body {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      font-weight: 300;
+      max-width: 560px;
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 80vh;
+    }
+
+    .about-image {
+      background: var(--teal-ghost);
+      min-height: 500px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-image img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+
+    .about-image-placeholder {
+      width: 100%; height: 100%;
+      min-height: 500px;
+      background: linear-gradient(160deg, var(--teal-ghost) 0%, var(--teal-pale) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .about-image-placeholder span {
+      color: var(--teal-mid);
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .about-content {
+      background: var(--off-white);
+      padding: 6rem 5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .about-content .section-title { color: var(--teal-darkest); }
+
+    .about-content .section-body { color: #2a4a4a; }
+
+    .about-stats {
+      display: flex;
+      gap: 2.5rem;
+      margin-top: 2.5rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--teal-pale);
+    }
+
+    .stat-num {
+      font-family: var(--serif);
+      font-size: 2.2rem;
+      color: var(--teal-bright);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--teal-mid);
+      margin-top: 0.25rem;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── SERVICES ── */
+    #services {
+      background: var(--teal-darkest);
+      padding: 6rem 5rem;
+    }
+
+    #services .section-title { color: var(--white); }
+    #services .section-label { color: var(--teal-light); }
+
+    .services-intro {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 3.5rem;
+      gap: 2rem;
+    }
+
+    .services-intro p {
+      color: var(--teal-pale);
+      font-size: 1rem;
+      line-height: 1.7;
+      max-width: 480px;
+      font-weight: 300;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      background: var(--teal-dark);
+      border: 1px solid rgba(45,191,191,0.15);
+      border-radius: 0.5rem;
+      padding: 2rem;
+      transition: border-color 0.25s, transform 0.25s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .service-card:hover {
+      border-color: var(--teal-light);
+      transform: translateY(-4px);
+    }
+
+    .service-icon {
+      font-size: 1.8rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .service-duration {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--teal-light);
+      margin-bottom: 0.5rem;
+    }
+
+    .service-name {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+      line-height: 1.25;
+    }
+
+    .service-desc {
+      font-size: 0.9rem;
+      color: var(--teal-pale);
+      line-height: 1.65;
+      flex: 1;
+      font-weight: 300;
+    }
+
+    .service-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 1.5rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid rgba(45,191,191,0.12);
+    }
+
+    .service-price {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      color: var(--teal-light);
+    }
+
+    .service-link {
+      display: inline-block;
+      background: var(--teal-light);
+      color: var(--teal-darkest);
+      padding: 0.5rem 1.1rem;
+      border-radius: 0.25rem;
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      transition: background 0.2s;
+    }
+
+    .service-link:hover { background: var(--teal-pale); }
+
+    /* ── HOW I TEACH ── */
+    .teach-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 60vh;
+    }
+
+    .teach-section.reverse { direction: rtl; }
+    .teach-section.reverse > * { direction: ltr; }
+
+    .teach-image {
+      position: relative;
+      overflow: hidden;
+      min-height: 450px;
+    }
+
+    .teach-image img { width: 100%; height: 100%; object-fit: cover; }
+
+    .teach-placeholder {
+      width: 100%; height: 100%;
+      min-height: 450px;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 1rem;
+    }
+
+    .teach-placeholder.dark {
+      background: linear-gradient(135deg, var(--teal-dark) 0%, var(--teal-mid) 100%);
+    }
+
+    .teach-placeholder.light {
+      background: linear-gradient(135deg, var(--teal-ghost) 0%, var(--teal-pale) 100%);
+    }
+
+    .teach-placeholder span {
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .teach-placeholder.dark span { color: rgba(255,255,255,0.3); }
+    .teach-placeholder.light span { color: var(--teal-mid); }
+
+    .teach-content {
+      padding: 5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .teach-content.dark-bg {
+      background: var(--teal-darkest);
+    }
+
+    .teach-content.dark-bg .section-title { color: var(--white); }
+    .teach-content.dark-bg .section-body { color: var(--teal-pale); }
+
+    .teach-content.light-bg {
+      background: var(--off-white);
+    }
+
+    .teach-content.light-bg .section-title { color: var(--teal-darkest); }
+    .teach-content.light-bg .section-body { color: #2a4a4a; }
+
+    .teach-list {
+      list-style: none;
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .teach-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+      font-weight: 300;
+    }
+
+    .teach-content.dark-bg .teach-list li { color: var(--teal-pale); }
+    .teach-content.light-bg .teach-list li { color: #2a4a4a; }
+
+    .teach-list li::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--teal-light);
+      flex-shrink: 0;
+    }
+
+    /* ── MATERIALS ── */
+    #materials {
+      background: var(--teal-mid);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 50vh;
+    }
+
+    .materials-content {
+      padding: 5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .materials-content .section-label { color: var(--teal-pale); }
+    .materials-content .section-title { color: var(--white); }
+    .materials-content .section-body { color: rgba(255,255,255,0.8); }
+
+    .materials-price {
+      margin-top: 2rem;
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+    }
+
+    .materials-price .amount {
+      font-family: var(--serif);
+      font-size: 3rem;
+      color: var(--teal-light);
+    }
+
+    .materials-price .per {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.9rem;
+    }
+
+    .materials-image {
+      background: var(--teal-bright);
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .materials-image span {
+      color: rgba(255,255,255,0.4);
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    /* ── TESTIMONIALS ── */
+    #testimonials {
+      background: var(--teal-darkest);
+      padding: 6rem 5rem;
+      text-align: center;
+    }
+
+    #testimonials .section-label { color: var(--teal-light); }
+    #testimonials .section-title { color: var(--white); margin-bottom: 3rem; }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .testimonial-card {
+      background: var(--teal-dark);
+      border: 1px solid rgba(45,191,191,0.12);
+      border-radius: 0.5rem;
+      padding: 2rem;
+      text-align: left;
+    }
+
+    .testimonial-quote {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--white);
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
+    }
+
+    .testimonial-author {
+      font-size: 0.8rem;
+      color: var(--teal-light);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .testimonial-stars {
+      color: var(--teal-light);
+      margin-bottom: 1rem;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+    }
+
+    /* ── CTA ── */
+    #book {
+      background: var(--teal-bright);
+      padding: 7rem 5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    #book .section-title { color: var(--white); }
+    #book .section-body { color: rgba(255,255,255,0.85); margin-top: 1rem; }
+
+    .cta-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .btn-white {
+      display: inline-block;
+      background: var(--white);
+      color: var(--teal-bright);
+      padding: 1rem 2rem;
+      border-radius: 0.3rem;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 0.05em;
+      text-align: center;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .btn-white:hover { background: var(--teal-ghost); transform: translateY(-2px); }
+
+    .btn-outline-white {
+      display: inline-block;
+      border: 1.5px solid rgba(255,255,255,0.5);
+      color: var(--white);
+      padding: 1rem 2rem;
+      border-radius: 0.3rem;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      text-align: center;
+      transition: border-color 0.2s;
+    }
+
+    .btn-outline-white:hover { border-color: var(--white); }
+
+    .contact-methods {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    .contact-method {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: rgba(255,255,255,0.8);
+      font-size: 0.9rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--teal-darkest);
+      padding: 3rem 5rem;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      border-top: 1px solid rgba(45,191,191,0.1);
+    }
+
+    .footer-brand .nav-logo {
+      display: block;
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+
+    .footer-tagline {
+      color: var(--teal-pale);
+      font-size: 0.85rem;
+      line-height: 1.6;
+      font-weight: 300;
+      max-width: 220px;
+    }
+
+    .footer-col h4 {
+      color: var(--white);
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .footer-col ul { list-style: none; }
+
+    .footer-col ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-col ul li a {
+      color: var(--teal-pale);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+      font-weight: 300;
+    }
+
+    .footer-col ul li a:hover { color: var(--white); }
+
+    .footer-bottom {
+      background: var(--teal-darkest);
+      padding: 1.25rem 5rem;
+      border-top: 1px solid rgba(45,191,191,0.06);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-bottom p {
+      color: rgba(255,255,255,0.3);
+      font-size: 0.78rem;
+    }
+
+    /* ── ANIMATIONS ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1.2rem; }
+      #hero, #about, .teach-section, #materials, #book { grid-template-columns: 1fr; }
+      .teach-section.reverse { direction: ltr; }
+      .hero-text { padding: 5rem 2rem 3rem; }
+      .hero-image { height: 50vw; min-height: 300px; }
+      #services { padding: 4rem 1.5rem; }
+      .services-grid { grid-template-columns: 1fr; }
+      .services-intro { flex-direction: column; }
+      .about-content, .teach-content, .materials-content { padding: 3rem 2rem; }
+      footer { grid-template-columns: 1fr 1fr; padding: 3rem 2rem; }
+      .footer-bottom { padding: 1rem 2rem; flex-direction: column; gap: 0.5rem; }
+      .trust-bar { flex-wrap: wrap; gap: 1.5rem; padding: 1.5rem 2rem; }
+      #testimonials { padding: 4rem 1.5rem; }
+      .testimonial-grid { grid-template-columns: 1fr; }
+      #book { padding: 4rem 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#hero" class="nav-logo">Ezell's AI Studio</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#book">Book</a></li>
+      <li><a href="merch.html">Merch</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-text fade-up">
+      <span class="hero-eyebrow">AI Coaching &amp; Education</span>
+      <h1 class="hero-title">A gentler way <em>into AI.</em></h1>
+      <p class="hero-sub">Patient, practical, and deeply human support for anyone who wants to understand how AI and everyday technology can fit into real life. No jargon. No pressure. Just real help from a real person.</p>
+      <div class="btn-group">
+        <a href="#services" class="btn-primary">Explore Services</a>
+        <a href="#book" class="btn-outline">Book a Session</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <!-- Replace with: <img src="your-photo.jpg" alt="Ezell's AI Studio" /> -->
+      <div class="hero-image-placeholder">
+        <span>📸 Your photo here</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-item"><span class="icon">🤝</span> Real Connection</div>
+    <div class="trust-item"><span class="icon">🌿</span> No Jargon Ever</div>
+    <div class="trust-item"><span class="icon">✨</span> Same-Day Results</div>
+    <div class="trust-item"><span class="icon">🔒</span> Privacy First</div>
+    <div class="trust-item"><span class="icon">💻</span> Remote Sessions</div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-image">
+      <!-- Replace with: <img src="your-about-photo.jpg" alt="About Ezell" /> -->
+      <div class="about-image-placeholder">
+        <span>📸 Your photo here</span>
+      </div>
+    </div>
+    <div class="about-content fade-up">
+      <p class="section-label">About</p>
+      <h2 class="section-title">I believe people learn best when they feel respected.</h2>
+      <p class="section-body">That means clear language, patient pacing, large-font materials, room for questions, and a strong emphasis on privacy, safety, and confidence. No jargon. No pressure. No shame about where you're starting from.</p>
+      <p class="section-body" style="margin-top:1rem;">AI is here whether we like it or not — so let's make it something that works beautifully for <em>you.</em></p>
+      <div class="about-stats">
+        <div>
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Remote sessions</div>
+        </div>
+        <div>
+          <div class="stat-num">6</div>
+          <div class="stat-label">Service options</div>
+        </div>
+        <div>
+          <div class="stat-num">$40</div>
+          <div class="stat-label">Starting price</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="services-intro fade-up">
+      <div>
+        <p class="section-label">Services</p>
+        <h2 class="section-title">How I can <em style="font-style:italic; color:var(--teal-light)">help you.</em></h2>
+      </div>
+      <p>From one-on-one coaching to group sessions and custom programs — there is a place here for everyone.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card fade-up">
+        <div class="service-icon">👤</div>
+        <div class="service-duration">60 min · Remote</div>
+        <h3 class="service-name">One-on-One Coaching</h3>
+        <p class="service-desc">Personalized setup, tailored workflows, hands-on tech training, account and device basics, and follow-up resources. All for you, at your pace.</p>
+        <div class="service-footer">
+          <span class="service-price">$75</span>
+          <a href="https://buy.stripe.com/14A8wRgHJdAkaLYami7wA08" class="service-link">Book Now</a>
+        </div>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon">🔄</div>
+        <div class="service-duration">30 min · Remote</div>
+        <h3 class="service-name">Follow-Up Help</h3>
+        <p class="service-desc">Quick troubleshooting, a refresh on what we covered, or your next steps after a session. Right here when you need it.</p>
+        <div class="service-footer">
+          <span class="service-price">$40</span>
+          <a href="https://buy.stripe.com/bJecN73UX0Ny7zMdyu7wA02" class="service-link">Book Now</a>
+        </div>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon">👥</div>
+        <div class="service-duration">90 min · 4+ people</div>
+        <h3 class="service-name">Small Group Sessions</h3>
+        <p class="service-desc">Practical group training, live demos, guided practice, Q&amp;A, and a printed take-home folder for every person in the room.</p>
+        <div class="service-footer">
+          <span class="service-price">$180</span>
+          <a href="https://buy.stripe.com/00w14pgHJbsc7zM51Y7wA03" class="service-link">Book Now</a>
+        </div>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon">🏛️</div>
+        <div class="service-duration">90 min · 6+ people</div>
+        <h3 class="service-name">Large Group Sessions</h3>
+        <p class="service-desc">Scaled for organizations, teams, and community groups. Same warmth, same clarity, with implementation tips built in.</p>
+        <div class="service-footer">
+          <span class="service-price">$250</span>
+          <a href="https://buy.stripe.com/4gMdRbbnpgMw2fseCy7wA07" class="service-link">Book Now</a>
+        </div>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon">📚</div>
+        <div class="service-duration">Multi-Session Program</div>
+        <h3 class="service-name">Growing with AI</h3>
+        <p class="service-desc">A progressive learning series designed for deeper support, step-by-step confidence building, and community programming.</p>
+        <div class="service-footer">
+          <span class="service-price">$60<span style="font-size:1rem; color:var(--teal-pale)">/person</span></span>
+          <a href="https://buy.stripe.com/fZuaEZbnpao83jwbqm7wA06" class="service-link">Learn More</a>
+        </div>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon">💼</div>
+        <div class="service-duration">Project Based</div>
+        <h3 class="service-name">Custom Business Support</h3>
+        <p class="service-desc">Project scoping, workflow design, and follow-up support for small businesses that want practical AI help without the hype.</p>
+        <div class="service-footer">
+          <span class="service-price">$250</span>
+          <a href="https://buy.stripe.com/14A9AVajl1RCdYa2TQ7wA05" class="service-link">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW I TEACH — Section 1 -->
+  <div class="teach-section">
+    <div class="teach-image">
+      <!-- Replace with: <img src="your-teaching-photo.jpg" alt="Teaching" /> -->
+      <div class="teach-placeholder dark">
+        <span>📸 Your photo here</span>
+      </div>
+    </div>
+    <div class="teach-content dark-bg fade-up">
+      <p class="section-label">How I Teach</p>
+      <h2 class="section-title">"Come as you are."</h2>
+      <p class="section-body">No matter where you're starting from, you belong here. Learning technology should feel empowering — not embarrassing.</p>
+      <ul class="teach-list">
+        <li>Plain English, always — no tech speak</li>
+        <li>Patient pacing, you set the speed</li>
+        <li>Large-font printed take-home materials</li>
+        <li>Privacy &amp; safety covered every session</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- HOW I TEACH — Section 2 -->
+  <div class="teach-section reverse">
+    <div class="teach-content light-bg fade-up">
+      <p class="section-label" style="color:var(--teal-mid)">What You'll Walk Away With</p>
+      <h2 class="section-title">Real skills. Same day.</h2>
+      <p class="section-body">Not theory. Not fluff. Every session is designed so you leave with something practical you can actually use right away — whether that's setting up an account, using an AI tool, or understanding how to stay safe online.</p>
+      <ul class="teach-list">
+        <li>Hands-on practice during every session</li>
+        <li>Follow-up resources emailed to you</li>
+        <li>Safe space to ask any question</li>
+        <li>Confidence you can build on</li>
+      </ul>
+    </div>
+    <div class="teach-image">
+      <!-- Replace with: <img src="your-results-photo.jpg" alt="Results" /> -->
+      <div class="teach-placeholder light">
+        <span>📸 Your photo here</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MATERIALS -->
+  <section id="materials">
+    <div class="materials-content fade-up">
+      <p class="section-label">Take Something Home</p>
+      <h2 class="section-title">Printed materials for every group session.</h2>
+      <p class="section-body">Easy to read. Large font. Designed to make learning feel less overwhelming and more accessible. Every participant gets one.</p>
+      <div class="materials-price">
+        <span class="amount">$25</span>
+        <span class="per">per person · includes shipping</span>
+      </div>
+      <a href="https://book.stripe.com/7sY7sN9fh2VG5rE3XU7wA01" class="btn-primary" style="margin-top:1.5rem; align-self:flex-start;">Order Printed Materials</a>
+    </div>
+    <div class="materials-image">
+      <!-- Replace with: <img src="your-materials-photo.jpg" alt="Printed Materials" /> -->
+      <span>📸 Your photo here</span>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <p class="section-label">What People Say</p>
+    <h2 class="section-title">Real words from real people.</h2>
+    <div class="testimonial-grid">
+      <div class="testimonial-card fade-up">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote">"I finally feel like I understand what AI actually is — and it doesn't scare me anymore. That's huge for me."</p>
+        <span class="testimonial-author">— Session Participant</span>
+      </div>
+      <div class="testimonial-card fade-up">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote">"The printed materials were a game changer. I still refer back to them every week. So clear and easy to follow."</p>
+        <span class="testimonial-author">— Group Session Attendee</span>
+      </div>
+      <div class="testimonial-card fade-up">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote">"No pressure, no judgment. Just someone who really cares about helping you get it. I booked a follow-up same day."</p>
+        <span class="testimonial-author">— One-on-One Client</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA / BOOK -->
+  <section id="book">
+    <div class="fade-up">
+      <p class="section-label" style="color:rgba(255,255,255,0.6)">Ready?</p>
+      <h2 class="section-title">There is no wrong place to start.</h2>
+      <p class="section-body">Wherever you are is exactly the right place to begin. Reach out, ask a question, or just book a session — we'll figure it out together.</p>
+      <div class="contact-methods">
+        <div class="contact-method">💻 Remote via Zoom · Skype · FaceTime</div>
+        <div class="contact-method">📍 Serving clients everywhere</div>
+      </div>
+    </div>
+    <div class="cta-buttons fade-up">
+      <a href="https://eezell.github.io/booking.html" class="btn-white">Book a Session</a>
+      <a href="#services" class="btn-outline-white">View All Services</a>
+      <a href="#about" class="btn-outline-white">Learn More About Me</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-brand">
+      <a href="#hero" class="nav-logo">Ezell's AI Studio</a>
+      <p class="footer-tagline">Patient, practical AI and technology support for real people.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#book">Book a Session</a></li>
+        <li><a href="merch.html">Merch</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="https://buy.stripe.com/14A8wRgHJdAkaLYami7wA08">One-on-One</a></li>
+        <li><a href="https://buy.stripe.com/bJecN73UX0Ny7zMdyu7wA02">Follow-Up</a></li>
+        <li><a href="https://buy.stripe.com/00w14pgHJbsc7zM51Y7wA03">Group Sessions</a></li>
+        <li><a href="https://buy.stripe.com/fZuaEZbnpao83jwbqm7wA06">Growing with AI</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="https://eezell.github.io/booking.html">Book Now</a></li>
+        <li><a href="merch.html">Shop Merch</a></li>
+        <li><a href="https://book.stripe.com/7sY7sN9fh2VG5rE3XU7wA01">Order Materials</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <div class="footer-bottom">
+    <p>© 2026 Ezell's AI Studio · Crafted with intention · Powered by real human connection</p>
+    <p>Remote sessions available via Zoom · Skype · FaceTime</p>
+  </div>
+
+  <script>
+    // Scroll fade-in
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
